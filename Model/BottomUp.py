@@ -34,6 +34,3 @@ class Encoder(nn.Module):
         m5 = self.res_block_4(m4)
 
         return [m2, m3, m4, m5]
-
-
-a = Encoder()
