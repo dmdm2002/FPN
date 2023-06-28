@@ -28,9 +28,9 @@ class Encoder(nn.Module):
     def forward(self, x):
         x = self._first_conv(x)
 
-        m2 = self.res_block_1(x)
-        m3 = self.res_block_2(m2)
-        m4 = self.res_block_3(m3)
-        m5 = self.res_block_4(m4)
+        c2 = self.res_block_1(x)
+        c3 = self.res_block_2(c2)
+        c4 = self.res_block_3(c3)
+        c5 = self.res_block_4(c4)
 
-        return [m2, m3, m4, m5]
+        return [c2, c3, c4, c5]
