@@ -3,10 +3,10 @@ import torch.nn as nn
 
 
 class Encoder(nn.Module):
-    def __init__(self, name='resnet50'):
+    def __init__(self, backbone='resnet152'):
         super(Encoder, self).__init__()
 
-        model = torch.hub.load('pytorch/vision:v0.10.0', name, pretrained=True)
+        model = torch.hub.load('pytorch/vision:v0.10.0', backbone, pretrained=True)
         self._first_conv = self._make_first_conv(model)
 
         self.res_block_1 = model.layer1
@@ -32,4 +32,4 @@ class Encoder(nn.Module):
         c4 = self.res_block_3(c3)
         c5 = self.res_block_4(c4)
 
-        return [c2, c3, c4, c5]
+        return c2, c3, c4, c5
