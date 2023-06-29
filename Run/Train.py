@@ -8,7 +8,7 @@ import torch.utils.tensorboard as tensorboard
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 
-from Model.FPN import FPN
+from Model.FPN import FeaturePyramidNetwork
 from Utils.Managers import CkpManager, TransformManager
 from Utils.Displayer import Displayer
 from Utils.Options import Param
@@ -30,7 +30,7 @@ class Trainer(Param):
         print(f'[Device]: {self.device}')
         print('----------------------------------------------------------')
 
-        model = FPN(backbone=self.backbone)
+        model = FeaturePyramidNetwork(backbone=self.backbone)
         model, epoch = self.ckp_manager.load_ckp(model)
 
         model = model.to(self.device)
